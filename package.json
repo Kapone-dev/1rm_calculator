@@ -4,12 +4,16 @@
   "description": "Calculadora de pesos",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "start": "electron ./app/app.js"
   },
   "keywords": [],
   "author": "Martin Ferreira",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "electron": "^22.1.0"
+  },
+  "dependencies": {
+    "mongoose": "^6.9.0"
   }
 }
