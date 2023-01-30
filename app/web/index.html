@@ -4,19 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="styles.css">
+
+
+    <script>
+
+        function showResults(weight, reps) {
+            document.write("Weight: " + weight + " Reps: " + reps);
+            console.log("FUNCIONA")
+        }
+
+    </script>
     <title>Calculadora de pesos.</title>
 </head>
 <body>
     <h1>Bienvenido jefe</h1>
     
-    <form action="/calcular" method="POST">
-        <label for="peso">Peso en kilogramos</label>
-        <input type="number" name="peso" id="peso">
+    <p>Esta es una calculadora de pesos, para que puedas saber cuanto debes levantar en cada ejercicio, segun las repeticiones que hiciste.</p>
+    <form>
+        <div class="cards">
+            <div class="weight card">
+                <img src="./assets/img/image-1.jpg" alt="ERROR: NOT Weight image">
+                <label for="peso">Peso en kilogramos (KG)</label>
+                <input type="number" name="peso" id="peso" value="100">
+            </div>
+            
+            <div class="reps card">    
+                <img src="./assets/img/image-2.jpg" alt="ERROR: NOT reps image">
+                <label for="repeticiones">Repeticiones hechas</label>
+                <input type="number" name="repeticiones" id="repeticiones" value="10">
+            </div>
+        </div>
 
-        <label for="repeticiones">Repeticiones hechas</label>
-        <input type="number" name="repeticiones" id="repeticiones">
-
-        <button type="submit">Calcular</button>
+        <button type="submit" onclick="showResults(document.getElementById('peso').innerText, document.getElementById('repeticiones').innerText)">Calcular</button>
     </form>
 
 </body>

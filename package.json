@@ -2,18 +2,26 @@
   "name": "calculator-rms-app",
   "version": "1.0.0",
   "description": "Calculadora de pesos",
-  "main": "index.js",
+  "main": "app/app.js",
   "scripts": {
     "test": "node index.js",
-    "start": "electron ./app/app.js"
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "keywords": [],
   "author": "Martin Ferreira",
   "license": "ISC",
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.4",
+    "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-rpm": "^6.0.4",
+    "@electron-forge/maker-squirrel": "^6.0.4",
+    "@electron-forge/maker-zip": "^6.0.4",
     "electron": "^22.1.0"
   },
   "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
     "mongoose": "^6.9.0"
   }
 }
