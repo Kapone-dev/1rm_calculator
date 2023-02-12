@@ -7,18 +7,13 @@
     
     <link rel="stylesheet" href="styles.css">
 
-    // Notas:
-    // CAMBIAR EL NOMBRE DE LA FUNCION CREATOR A ALGO MAS DESCRITIVO.
-    // CAMBIAR EL NOMBRE DE LA FUNCION MOSTRARRESULTADOS A ALGO MAS DESCRITIVO.
-    // CAMBIAR EL NOMBRE DE LA VARIABLE PESO A ALGO MAS DESCRITIVO.
-    // CAMBIAR EL NOMBRE DE LA VARIABLE REPETICIONES A ALGO MAS DESCRITIVO.
     <script>
 
-        function creator(weight, reps) {
+        function changeResult(weight, reps) {
 
             const maximumWeight = weight * (1 + reps / 30.0);
 
-            const title = `<h2>1RM: ${maximumWeight}kg</h2>`;
+            const title = `<h2>1RM: ${maximumWeight.toFixed(2)}kg</h2>`;
             let table = "<table> ";
 
             // Procedemos a crear la tabla y guardarla en una string.
@@ -30,12 +25,12 @@
             return `${title}\n${table} </table>`;
         }
 
-        function mostrarResultados() {
-            const peso = document.getElementById('peso').value;
-            const repeticiones = document.getElementById('repeticiones').value;
+        function showResults() {
+            const weight = document.getElementById('weight').value;
+            const reps = document.getElementById('reps').value;
 
 
-            document.getElementById('resultado').innerHTML = creator(peso, repeticiones);
+            document.getElementById('result').innerHTML = changeResult(weight, reps);
         }
 
     </script>
@@ -45,22 +40,23 @@
     <h1>Bienvenido jefe</h1>
     
     <p>Esta es una calculadora de pesos, para que puedas saber cuanto debes levantar en cada ejercicio, segun las repeticiones que hiciste.</p>
+    <p id="importante">¡OJO! Esto es solo una estimación y es más acertable cuando se utilizan repeticiones bajas</p>
     <main>
         <div class="cards">
             <div class="weight card">
                 <img src="./assets/img/image-1.jpg" alt="ERROR: NOT Weight image">
                 <label for="peso">Peso en kilogramos (KG)</label>
-                <input type="number" name="peso" id="peso" value="100">
+                <input type="number" name="peso" id="weight" value="100">
             </div>
             
             <div class="reps card">    
                 <img src="./assets/img/image-2.jpg" alt="ERROR: NOT reps image">
                 <label for="repeticiones">Repeticiones hechas</label>
-                <input type="number" name="repeticiones" id="repeticiones" value="10">
+                <input type="number" name="repeticiones" id="reps" value="10">
             </div>
         </div>
 
-        <input type="button" onclick="mostrarResultados()">Calcular</button>
+        <input type="button" onclick="showResults()">Calcular</button>
         
 
         <!-- Acá se mostrara una tabla la cual mostrara el 1RM
@@ -74,7 +70,7 @@
             95%: 95kg
             90%: 90kg
         -->
-        <div id="resultado"></div>
+        <div id="result"></div>
 
 
     </main>
