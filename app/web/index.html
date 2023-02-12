@@ -7,12 +7,35 @@
     
     <link rel="stylesheet" href="styles.css">
 
-
+    // Notas:
+    // CAMBIAR EL NOMBRE DE LA FUNCION CREATOR A ALGO MAS DESCRITIVO.
+    // CAMBIAR EL NOMBRE DE LA FUNCION MOSTRARRESULTADOS A ALGO MAS DESCRITIVO.
+    // CAMBIAR EL NOMBRE DE LA VARIABLE PESO A ALGO MAS DESCRITIVO.
+    // CAMBIAR EL NOMBRE DE LA VARIABLE REPETICIONES A ALGO MAS DESCRITIVO.
     <script>
 
-        function showResults(weight, reps) {
-            document.write("Weight: " + weight + " Reps: " + reps);
-            console.log("FUNCIONA")
+        function creator(weight, reps) {
+
+            const maximumWeight = weight * (1 + reps / 30.0);
+
+            const title = `<h2>1RM: ${maximumWeight}kg</h2>`;
+            let table = "<table> ";
+
+            // Procedemos a crear la tabla y guardarla en una string.
+            for (let i = 1; i > 0.09; i -= 0.05) {
+                const weightPercent = maximumWeight * i;
+                table += `<tr><td>${(i * 100).toFixed(0)}%</td><td>${weightPercent.toFixed(1)}kg</td></tr>`;
+            }
+
+            return `${title}\n${table} </table>`;
+        }
+
+        function mostrarResultados() {
+            const peso = document.getElementById('peso').value;
+            const repeticiones = document.getElementById('repeticiones').value;
+
+
+            document.getElementById('resultado').innerHTML = creator(peso, repeticiones);
         }
 
     </script>
@@ -22,7 +45,7 @@
     <h1>Bienvenido jefe</h1>
     
     <p>Esta es una calculadora de pesos, para que puedas saber cuanto debes levantar en cada ejercicio, segun las repeticiones que hiciste.</p>
-    <form>
+    <main>
         <div class="cards">
             <div class="weight card">
                 <img src="./assets/img/image-1.jpg" alt="ERROR: NOT Weight image">
@@ -37,8 +60,23 @@
             </div>
         </div>
 
-        <button type="submit" onclick="showResults(document.getElementById('peso').innerText, document.getElementById('repeticiones').innerText)">Calcular</button>
-    </form>
+        <input type="button" onclick="mostrarResultados()">Calcular</button>
+        
 
+        <!-- Acá se mostrara una tabla la cual mostrara el 1RM
+            Además de 1RM como titulo, se mostraran 2 filas que va del 100% al 10% bajanado de 5 en 5.
+            En cada fila se mostrara el peso que se debe levantar en cada ejercicio.
+            Utilizando claramente el % de exigencia, por ejemplo
+    
+            1RM: 100kg
+    
+            100%: 100kg
+            95%: 95kg
+            90%: 90kg
+        -->
+        <div id="resultado"></div>
+
+
+    </main>
 </body>
 </html>
