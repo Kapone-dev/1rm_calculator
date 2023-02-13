@@ -1,8 +1,8 @@
-function creator(weight, reps) {
+function changeResult(weight, reps) {
 
     const maximumWeight = weight * (1 + reps / 30.0);
 
-    const title = `<h2>1RM: ${maximumWeight}kg</h2>`;
+    const title = `<h2>1RM: ${maximumWeight.toFixed(2)}kg</h2>`;
     let table = "<table> ";
 
     // Procedemos a crear la tabla y guardarla en una string.
@@ -10,14 +10,14 @@ function creator(weight, reps) {
         const weightPercent = maximumWeight * i;
         table += `<tr><td>${(i * 100).toFixed(0)}%</td><td>${weightPercent.toFixed(1)}kg</td></tr>`;
     }
-    
+
     return `${title}\n${table} </table>`;
 }
 
-function mostrarResultados() {
-    const peso = document.getElementById('peso').value;
-    const repeticiones = document.getElementById('repeticiones').value;
+function showResults() {
+    const weight = document.getElementById('weight').value;
+    const reps = document.getElementById('reps').value;
 
 
-    document.getElementById('resultado').innerHTML = creator(peso, repeticiones);
+    document.getElementById('result').innerHTML = changeResult(weight, reps);
 }
